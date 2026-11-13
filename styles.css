@@ -1,0 +1,85 @@
+/*
+  Paws & Whiskers: Meet the Pets.
+
+  PART 1, READY TO USE: the colors, fonts and spacing of the page. You don't need to change these rules.
+  Your rules go in PART 2, at the end of this file.
+*/
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  line-height: 1.4;
+  color: #1d3557;
+  background-color: #f1faee;
+}
+
+.site-header {
+  padding: 16px 24px 8px;
+  background-color: #1d3557;
+  color: #ffffff;
+}
+
+.site-name {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.site-nav a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+main {
+  max-width: 40rem;
+  padding: 0 24px 32px;
+}
+
+.intro {
+  margin-bottom: 24px;
+}
+
+.pet h2 {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+}
+
+.pet p {
+  margin: 0 0 8px;
+}
+
+.tags li {
+  font-size: 0.875rem;
+}
+
+.how-to-adopt {
+  margin-top: 32px;
+}
+
+footer {
+  padding: 16px 24px;
+  background-color: #a8dadc;
+}
+
+/*
+  PART 2, YOURS: write your rules below this comment. The README says what each one is for.
+
+  1. .site-nav ul        no bullets, no indent, no space around the list
+     .site-nav li        the menu's items side by side, in one row
+     .site-nav a         each link fills its item, like a button: padding all the way around
+
+  2. .pet-list           no bullets, no indent, no space around the list
+     .pet                each pet a card: padding, a white background, a border and rounded corners
+                         and space between one card and the next
+
+  3. .tags               no bullets, no indent, no space around each list of tags
+     .tags li            each tag a pill: side by side, with padding, a background and fully round ends,
+                         and a little room below, for when the tags wrap onto a second line
+
+  4. .adoption-steps     the steps keep their numbers (the order matters), with space between the steps
+     ::marker            the step numbers in the shelter's red, #e63946, and bigger than the text: 1.25rem
+
+  Strip the list look from each list by its class. A rule for every ul or ol would take the numbers off
+  the adoption steps too.
+*/

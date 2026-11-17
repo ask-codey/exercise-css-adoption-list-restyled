@@ -80,6 +80,10 @@ footer {
   4. .adoption-steps     the steps keep their numbers (the order matters), with space between the steps
      ::marker            the step numbers in the shelter's red, #e63946, and bigger than the text: 1.25rem
 
+  5. .welcome-photo      Pepper's photo at the right of the introduction, 200px wide, with the words running down
+                         its left side: 16px of room between the photo and the words, and 8px below it
+     .pet-list           the pet list starts below the photo, not beside it
+
   Strip the list look from each list by its class. A rule for every ul or ol would take the numbers off
   the adoption steps too.
 */

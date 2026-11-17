@@ -2,7 +2,7 @@
 
 Exercise code for the lesson **Exercise: The Adoption List, Restyled** in the CSS in Depth course on [ask-codey.com](https://www.ask-codey.com).
 
-Paws & Whiskers, a pet adoption shelter, has a "Meet the pets" page with its colors and fonts chosen, but every list on it still looks the way the browser draws a list: the menu is a bulleted column, the six pets are bullets with their names as big headings, each pet's tags are a small bulleted list inside that, and the steps to adopt are plain numbers crammed together. You'll write the rules in `styles.css` that turn the menu into a row of buttons, the pets into cards, the tags into pills, and the steps into a numbered list the shelter would be proud of, and ten checks tell you when each part is doing its job.
+Paws & Whiskers, a pet adoption shelter, has a "Meet the pets" page with its colors and fonts chosen, but every list on it still looks the way the browser draws a list: the menu is a bulleted column, the six pets are bullets with their names as big headings, each pet's tags are a small bulleted list inside that, and the steps to adopt are plain numbers crammed together. A photo of Pepper, one of the cats, sits on a line of its own above the introduction. You'll write the rules in `styles.css` that turn the menu into a row of buttons, the pets into cards, the tags into pills, and the steps into a numbered list the shelter would be proud of, and wrap the introduction around Pepper's photo; twelve checks tell you when each part is doing its job.
 
 ## Before you start
 
@@ -10,9 +10,10 @@ You need VS Code with the Live Server extension, a current Chrome, Edge or Firef
 
 ## What's here
 
-- `index.html`: the page: a header with the shelter's name and its menu (a list of three links), a list of six pets (each with a name, a few words about them and a list of tags), the four steps to adopt in a numbered list, and a footer. Ready to use: don't change it.
+- `index.html`: the page: a header with the shelter's name and its menu (a list of three links), Pepper's welcome photo above the introduction, a list of six pets (each with a name, a few words about them and a list of tags), the four steps to adopt in a numbered list, and a footer. Ready to use: don't change it.
 - `styles.css`: Part 1 holds the colors, fonts and spacing, ready to use. Part 2 is empty except for a comment that lists the rules to write. For you to finish.
-- `page.test.js`: the ten checks. You don't need to change this file.
+- `images/pepper.jpg`: Pepper's photo, 400 by 300 pixels. Ready to use.
+- `page.test.js`: the twelve checks. You don't need to change this file.
 - `package.json`: tells npm what the checks need (`jsdom`, which reads your page and stylesheet the way a browser does). Ready to use.
 - `.gitignore`: keeps the `node_modules` folder that `npm install` makes out of Git. Ready to use.
 
@@ -24,6 +25,8 @@ Open this folder in VS Code, right-click `index.html` and choose **Open with Liv
 2. **The pets become cards.** Take the list look off the pet list (`.pet-list`). Make each pet (`.pet`) a card: padding, a white background (`#ffffff`), a border if you like (the page uses `#a8dadc` for borders) and rounded corners. Put space between one card and the next.
 3. **The tags become pills.** Take the list look off every list of tags (`.tags`). Make each tag (`.tags li`) a pill: side by side with the others, with padding, a background color (try `#a8dadc`) and fully round ends, and a little room below it for when the tags wrap onto a second line.
 4. **The steps keep their numbers.** The order of the adoption steps matters, so `.adoption-steps` stays a numbered list. Put space between the steps, and with `::marker` make the numbers the shelter's red, `#e63946`, and bigger than the text: `1.25rem`.
+
+5. **Pepper's photo sits beside the introduction.** Make the welcome photo (`.welcome-photo`) float at the right of the introduction, `200px` wide, with the introduction's words running down its left side: `16px` of room between the photo and the words, and `8px` below it. Then make the pet list (`.pet-list`) start below the photo, so the first card doesn't squeeze in beside it.
 
 Take the list look off each list by its class, never with a rule for every `ul` or `ol`: that would take the numbers off the adoption steps too.
 
@@ -41,7 +44,7 @@ Then run the checks whenever you like:
 npm test
 ```
 
-Each check prints one line: ✔ when it passes, ✖ when it doesn't yet. Before you write any rules, the first check passes (the page and its link line are already there) and the other nine fail. That's expected. Under **failing tests**, each one has a message that starts **Not yet:** and says what it found and what to look at, for example *The pet list (.pet-list) still shows its markers (list-style-type: disc).* When the last lines say `pass 10` and `fail 0`, you're done.
+Each check prints one line: ✔ when it passes, ✖ when it doesn't yet. Before you write any rules, the first check passes (the page and its link line are already there) and the other eleven fail. That's expected. Under **failing tests**, each one has a message that starts **Not yet:** and says what it found and what to look at, for example *The pet list (.pet-list) still shows its markers (list-style-type: disc).* When the last lines say `pass 12` and `fail 0`, you're done.
 
 ## The checklist the checks can't do
 
@@ -52,6 +55,7 @@ The checks read your rules; they don't look at the screen. So look at the page i
 - The pets are white cards with rounded corners, stacked down the page with a gap between each pair.
 - The tags sit side by side as rounded pills. Make the window narrow: they wrap onto a new line, and the lines don't touch.
 - The adoption steps still show 1 to 4, in red and a little bigger than the text, with room between the steps.
+- Pepper's photo sits at the right, with the introduction's words down its left side and a gap between them, and the first pet card starts below the photo, across the full width.
 
 ## Tips
 
@@ -60,6 +64,7 @@ The checks read your rules; they don't look at the screen. So look at the page i
 - A small gap between the menu buttons and between the pills, that you never wrote, is the space between the `<li>` tags in the HTML. It's expected: *Lists Side by Side, by Hand* explains it.
 - `.pet + .pet` picks every card that comes right after another card, so a margin above it goes *between* the cards.
 - `list-style` goes on the list, and `::marker` goes on the list item. *Styling a List That Stays a List* shows both.
+- Room between a floated photo and the words goes on the photo, as a margin on the side that faces the words: the paragraph's box runs underneath the float, so its own margin doesn't help. `clear` goes on the element that should start below the float. *Wrapping Text Around a Picture: float and clear* shows both.
 - Right-click any part of the page and choose **Inspect** to see which rules the browser used. A declaration with a line through it lost to another rule, and the browser's own list rules are at the bottom, labeled *user agent stylesheet*.
 - `npm test` checks the files you saved. A white dot on a file's tab in VS Code means it has changes you haven't saved yet.
 

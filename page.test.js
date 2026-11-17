@@ -1,4 +1,4 @@
-// Checks the list rules in your styles.css: it reads index.html and styles.css the way a browser does, then asks each
+// Checks the list and float rules in your styles.css: it reads index.html and styles.css the way a browser does, then asks each
 // list and list item on the page for its markers, its padding and margins, its display value and its box. It doesn't
 // measure anything on screen, so look at the page too: the README's checklist covers that.
 // Run it with: npm test (run npm install once first). You don't need to change this file.
@@ -117,14 +117,15 @@ const tags = all('.tags li');
 const steps = one('.adoption-steps');
 const stepItems = all('.adoption-steps li');
 const nameOf = (element) => element.closest('.pet').querySelector('h2').textContent;
+const photo = one('.welcome-photo');
 
-test('1) index.html links styles.css, and has the menu, the pets and the adoption steps', () => {
+test('1) index.html links styles.css, and has the welcome photo, the menu, the pets and the adoption steps', () => {
   check(html, 'There is no index.html in this folder. Check that you opened the exercise folder, the one with package.json in it.');
   const link = one('link[rel="stylesheet"]');
   check(link && link.getAttribute('href') === 'styles.css',
     'index.html no longer links styles.css. Put this line back inside <head>: <link rel="stylesheet" href="styles.css">');
-  check(navList && navLinks.length === 3 && petList && pets.length === 6 && tagLists.length === 6 && steps && stepItems.length === 4,
-    'index.html has changed: it should have a menu list with three links, a pet list with six pets, a list of tags for each pet and four adoption steps. Download a fresh copy of index.html if you need to.');
+  check(navList && navLinks.length === 3 && petList && pets.length === 6 && tagLists.length === 6 && steps && stepItems.length === 4 && photo,
+    'index.html has changed: it should have the welcome photo of Pepper, a menu list with three links, a pet list with six pets, a list of tags for each pet and four adoption steps. Download a fresh copy of index.html if you need to.');
 });
 
 test('2) the menu\'s list has no bullets, no indent and no margins', () => {
@@ -215,4 +216,22 @@ test('10) the step numbers are the shelter\'s red, and bigger, with ::marker', (
     `The step numbers ${color ? `are ${color}, the same color as the step text` : 'have no color of their own yet'}. Give them the shelter's red, #e63946, in the ::marker rule.`);
   check(Boolean(size),
     'The step numbers are the same size as the step text. Give them a font-size in the ::marker rule, such as 1.25rem.');
+});
+
+test("11) Pepper's photo floats at the right of the introduction, with room beside and below it", () => {
+  const s = style(photo);
+  check(s.float === 'right',
+    `Pepper's photo (.welcome-photo) has float: ${s.float || 'none'}, so the introduction can't run beside it. Which float value puts it at the right, with the words down its left side?`);
+  check(s.width && s.width !== 'auto' && s.width !== '100%',
+    `Pepper's photo has no width yet${s.width ? ` (width: ${s.width})` : ''}, so it floats at its full size and leaves little room for the words. Give .welcome-photo a width, such as 200px.`);
+  check(px(s.marginLeft) > 0,
+    "Pepper's photo has no margin on its left side, so the introduction's words touch it. The room goes on the float itself: a margin-left, such as 16px.");
+  check(px(s.marginBottom) > 0,
+    "Pepper's photo has no margin below it. Give .welcome-photo a margin-bottom, such as 8px, so nothing touches its bottom edge.");
+});
+
+test("12) the pet list starts below Pepper's photo, not beside it", () => {
+  const clear = style(petList).clear;
+  check(clear === 'right' || clear === 'both',
+    `The pet list (.pet-list) has clear: ${clear || 'none'}, so the first card squeezes in beside the photo. clear: right (or both) on the pet list starts it below the photo.`);
 });
